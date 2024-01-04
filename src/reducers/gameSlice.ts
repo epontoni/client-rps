@@ -15,6 +15,9 @@ const gameSlice = createSlice({
             console.log('Creating game...', action.payload)
            state.room = action.payload
         },
+        setRoom: (state, action) => {
+            state.room = action.payload
+        },
         setSocket: (state, action) => {
             console.log('Seteando el socket', action.payload)
             state.socket = action.payload
@@ -31,5 +34,5 @@ const gameSlice = createSlice({
     }
 });
 
-export const { setSocket, createRoom, joinRoom, saveNickname, setOnlineStatus } = gameSlice.actions
+export const { setSocket, createRoom, joinRoom, saveNickname, setOnlineStatus, setRoom} = gameSlice.actions
 export default gameSlice;

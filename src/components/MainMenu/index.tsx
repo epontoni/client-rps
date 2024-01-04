@@ -1,9 +1,12 @@
 import { useEffect } from "react"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
+import { Socket } from "socket.io-client";
+import { setRoom } from "../../reducers/gameSlice";
 
 export default function MainMenu() {
   const state = useSelector((state) => state.game);
+  const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.game.nickname);
   const navigate = useNavigate()
 
@@ -17,6 +20,12 @@ export default function MainMenu() {
   const handleCreateRoom = () => {
     console.log('Creando sala...')
     state.socket.emit('createRoom', {owner: userLogin})
+
+    state.socket.on('roomCreated', (data) => {
+      console.log('Sala creada', data)
+      dispatch(setRoom(data))
+      navigate('/lobby')
+    })
   }
 
   return (
