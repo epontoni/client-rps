@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 
 export default function MainMenu() {
-  const socket = useSelector((state) => state.game.socket);
+  const state = useSelector((state) => state.game);
   const userLogin = useSelector((state) => state.game.nickname);
   const navigate = useNavigate()
 
@@ -14,13 +14,20 @@ export default function MainMenu() {
     }
   }, [])
 
+  const handleCreateRoom = () => {
+    console.log('Creando sala...')
+    state.socket.emit('createRoom', {owner: userLogin})
+  }
+
   return (
     <div>
-      <h2>Menú principal del juego</h2>
-      <h3>Bienvenido { userLogin }!</h3>
-      <div>{ socket?.connected ? `🟢 Conectado (${socket.id})` : `🔴 Desconectado` }</div>
+      <h2>Game main menu</h2>
+      <h3>Welcome { userLogin }!</h3>
+      <div>{ state.onlineStatus ? `🟢 Connected (${state.socket.id})` : `🔴 Disconnected` }</div>
+      <div className="d-flex my-4">
+        <button onClick={handleCreateRoom} className="btn btn-primary m-auto">Create room</button>
+      </div>
       <ul>
-        <li>[Crear Sala]</li>
         <li>[Unirse a sala]</li>
       </ul>
     </div>

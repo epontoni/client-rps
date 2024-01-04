@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { saveNickname, setSocket } from "../../reducers/gameSlice"
+import { saveNickname, setOnlineStatus, setSocket } from "../../reducers/gameSlice"
 import { io } from "socket.io-client"
 
 export default function Login() {
@@ -26,6 +26,12 @@ export default function Login() {
         socket.on('connect', () => {
             console.log('Conectado al servidor')
             dispatch(setSocket(socket))
+            dispatch(setOnlineStatus(true))
+        })
+        socket.on('disconnect', () => {
+            console.log('Desconectado del servidor')
+            dispatch(setSocket(socket))
+            dispatch(setOnlineStatus(false))
         })
         console.log(`${nickname} se está registrando en el servidor...`)
         navigate('/main-menu')

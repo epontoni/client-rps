@@ -25,8 +25,11 @@ const gameSlice = createSlice({
         saveNickname: (state, action) => {
             state.nickname = action.payload
         },
+        setOnlineStatus: (state, action) => {
+            state.onlineStatus = action.payload
+        }
     }
 });
 
-export const { setSocket, createRoom, joinRoom, saveNickname } = gameSlice.actions
+export const { setSocket, createRoom, joinRoom, saveNickname, setOnlineStatus } = gameSlice.actions
 export default gameSlice;
