@@ -5,6 +5,7 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from './store'
+import MainMenu from "./components/MainMenu/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     children: [
       /*{ index: true, element: <MainMenu /> },
       { path: "room/:id", element: <Room /> },*/
+      { path: "main-menu", element: <MainMenu /> },
     ],
   },
 ]);
