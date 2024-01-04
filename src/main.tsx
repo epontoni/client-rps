@@ -7,14 +7,15 @@ import { Provider } from "react-redux";
 import store from './store'
 import MainMenu from "./components/MainMenu/index.tsx";
 import Lobby from "./components/Lobby/index.tsx";
+import Login from "./components/Login/index.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      /*{ index: true, element: <MainMenu /> },
-      { path: "room/:id", element: <Room /> },*/
+      { index: true, element: <Login /> },
+      /*{ path: "room/:id", element: <Room /> },*/
       { path: "main-menu", element: <MainMenu /> },
       { path: "lobby", element: <Lobby /> },
     ],

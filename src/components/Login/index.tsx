@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { saveNickname, setOnlineStatus, setSocket } from "../../reducers/gameSlice"
@@ -9,6 +9,13 @@ export default function Login() {
     const state = useSelector((state) => state.game)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if(state.nickname === '')
+        {
+            navigate('/')
+        }
+    }, [])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNickname(event.target.value)

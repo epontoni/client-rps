@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import { Socket } from "socket.io-client";
 import { setRoom } from "../../reducers/gameSlice";
 
 export default function MainMenu() {
