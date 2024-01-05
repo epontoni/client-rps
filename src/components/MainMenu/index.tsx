@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { setRoom } from "../../reducers/gameSlice";
+import Instructions from "../Instructions";
 
 export default function MainMenu() {
   const state = useSelector((state) => state.game);
@@ -38,6 +39,7 @@ export default function MainMenu() {
       <ul>
         <li>[Unirse a sala]</li>
       </ul>
+      <Instructions />
     </div>
   )
 }
