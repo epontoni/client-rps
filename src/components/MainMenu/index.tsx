@@ -12,14 +12,14 @@ export default function MainMenu() {
 
   useEffect(() => {
     console.log('[MainMenu]', localStorage.getItem('nickname'))
-    if(!localStorage.getItem('nickname') || userLogin === '') {
+    if (!localStorage.getItem('nickname') || userLogin === '') {
       navigate('/')
     }
   }, [])
 
   const handleCreateRoom = () => {
     console.log('Creando sala...')
-    state.socket.emit('createRoom', {owner: userLogin})
+    state.socket.emit('createRoom', { owner: userLogin })
 
     state.socket.on('roomCreated', (data) => {
       console.log('Sala creada', data)
@@ -29,17 +29,19 @@ export default function MainMenu() {
   }
 
   return (
-    <div>
-      <h2>Game main menu</h2>
-      <h3>Welcome { userLogin }!</h3>
-      <div>{ state.onlineStatus ? `🟢 Connected (${state.socket.id})` : `🔴 Disconnected` }</div>
-      <div className="d-flex my-4">
-        <button onClick={handleCreateRoom} className="btn btn-primary m-auto">Create room</button>
+    <div className="main-menu-container">
+      <div className="menu">
+        <h2>Game main menu</h2>
+        <h3>Welcome {userLogin}!</h3>
+        <div>{state.onlineStatus ? `🟢 Connected (${state.socket.id})` : `🔴 Disconnected `}</div>
+        <div className="d-flex my-4">
+          <button onClick={handleCreateRoom} className="btn btn-primary m-auto">Create Room</button>
+        </div>
+        <ul>
+          <li>[Unirse a Sala]</li>
+        </ul>
       </div>
-      <ul>
-        <li>[Unirse a sala]</li>
-      </ul>
       <Instructions />
     </div>
-  )
+  );
 }

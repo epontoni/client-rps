@@ -1,47 +1,75 @@
 header h1 {
-    text-align: center;
+  text-align: center;
 }
 
 header p {
-    text-align: center;
+  text-align: center;
 }
 
 .fadeIn {
-    animation: fadeIn ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  animation: fadeIn ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Instrucciones.css */
 
 /* Estilo para el contenedor principal */
-.instrucciones-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilo para el encabezado */
-  .instrucciones-header {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo para el párrafo */
-  .instrucciones-text {
-    text-align: center;
-    font-size: 18px;
-  }
+.main-menu-container {
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  grid-gap: 20px;
+}
+
+.menu {
+  padding: 20px;
+  margin-bottom: 50px;
+  background-color: #f2f2ff;
+}
+
+.instructions-container {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instructions-side {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Estilo para el encabezado */
+.instructions-header {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Estilo para el párrafo */
+.instructions-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  font-style: italic;
+  color: navy;
+}
+
+/* Instrucciones.css */
+
+.instructions-description {
+  margin-top: 10px;
+  text-align: center;
+}

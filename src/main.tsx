@@ -8,7 +8,7 @@ import store from './store'
 import MainMenu from "./components/MainMenu/index.tsx";
 import Lobby from "./components/Lobby/index.tsx";
 import Login from "./components/Login/index.tsx";
-import Instrucciones from "./components/Instructions/index.tsx";
+import Instructions from "./components/Instructions/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       /*{ path: "room/:id", element: <Room /> },*/
       { path: "main-menu", element: <MainMenu /> },
       { path: "lobby", element: <Lobby /> },
-      { path: "how-to-play", element: <Instrucciones /> },
+      { path: "how-to-play", element: <Instructions /> },
     ],
   },
 ]);
