@@ -13,7 +13,7 @@ const gameSlice = createSlice({
     reducers:{
         createRoom: (state, action) => {
             console.log('Creating game...', action.payload)
-           state.room = action.payload
+            state.room = action.payload
         },
         setRoom: (state, action) => {
             state.room = action.payload
@@ -30,9 +30,13 @@ const gameSlice = createSlice({
         },
         setOnlineStatus: (state, action) => {
             state.onlineStatus = action.payload
+        },
+        setPlayer: (state, action) => {
+            state.player = action.payload
+        
         }
     }
 });
 
-export const { setSocket, createRoom, joinRoom, saveNickname, setOnlineStatus, setRoom} = gameSlice.actions
+export const { setSocket, createRoom, joinRoom, saveNickname, setOnlineStatus, setRoom, setPlayer } = gameSlice.actions
 export default gameSlice;

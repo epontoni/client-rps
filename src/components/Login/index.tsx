@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { saveNickname, setOnlineStatus, setSocket } from "../../reducers/gameSlice"
+import { saveNickname, setOnlineStatus, setPlayer, setSocket } from "../../reducers/gameSlice"
 import { io } from "socket.io-client"
 
 export default function Login() {
@@ -23,18 +23,29 @@ export default function Login() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        // dispatch({ type: 'LOGIN', payload: nickname })
-        // Guardar en localStorage el nickname y en el estado global
+        if(nickname.length < 3) {
+            alert('El nickname debe tener al menos 3 caracteres')
+            return
+        }
+        
+        // Guardar en localStorage y en el estado global
         localStorage.setItem('nickname', nickname)
         dispatch(saveNickname(nickname))
+
         
         // Establecer la conexión con el servidor ¿Exise ya el nickname?
-        const socket = io('http://localhost:3000', { transports: ['websocket'] })
+        const socket = io('http://localhost:3000', { transports: ['websocket'], auth: { nickname }})
         socket.on('connect', () => {
             console.log('Conectado al servidor')
             dispatch(setSocket(socket))
             dispatch(setOnlineStatus(true))
         })
+
+        socket.on('playerCreated', (data) => {
+            console.log('playerCreated', data)
+            dispatch(setPlayer(data))
+        })
+
         socket.on('disconnect', () => {
             console.log('Desconectado del servidor')
             dispatch(setSocket(socket))

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   const ROCK = ['🪨', '✊']
@@ -21,7 +22,8 @@ export default function Header() {
 
   return (
     <header>
-      <h1>Rock Paper Scissors</h1>
+      <h1><Link to={'/'} className='text-decoration-none'>Rock Paper Scissors</Link></h1>
+      <h2 className='text-secondary'>Settle your disputes like an adult!</h2>
       <p className='fadeIn'>{sub}</p>
     </header>
   )

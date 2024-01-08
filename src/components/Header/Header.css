@@ -2,6 +2,12 @@ header h1 {
     text-align: center;
 }
 
+header h2 {
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+}
+
 header p {
     text-align: center;
 }

@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { setRoom } from "../../reducers/gameSlice";
+import JoinRoom from "../JoinRoom";
 
 export default function MainMenu() {
   const state = useSelector((state) => state.game);
@@ -18,7 +19,7 @@ export default function MainMenu() {
 
   const handleCreateRoom = () => {
     console.log('Creando sala...')
-    state.socket.emit('createRoom', {owner: userLogin})
+    state.socket.emit('createRoom', {socketId: state.socket.id, nickname: userLogin})
 
     state.socket.on('roomCreated', (data) => {
       console.log('Sala creada', data)
@@ -29,15 +30,12 @@ export default function MainMenu() {
 
   return (
     <div>
-      <h2>Game main menu</h2>
       <h3>Welcome { userLogin }!</h3>
       <div>{ state.onlineStatus ? `🟢 Connected (${state.socket.id})` : `🔴 Disconnected` }</div>
       <div className="d-flex my-4">
         <button onClick={handleCreateRoom} className="btn btn-primary m-auto">Create room</button>
       </div>
-      <ul>
-        <li>[Unirse a sala]</li>
-      </ul>
+      <JoinRoom />
     </div>
   )
 }
