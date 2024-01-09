@@ -4,6 +4,8 @@ button:disabled {
   }
 
 .choice {
+  width: 3rem;
+  height: 3rem;
   font-size: 1.5rem;
   position: absolute;
   right: calc(50% - 1.5rem);

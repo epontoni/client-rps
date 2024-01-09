@@ -18,7 +18,7 @@ export default function Game() {
   }, []);
 
   useEffect(() => {
-    if(state?.room?.rounds?.length > 1) {
+    if(state?.room?.rounds?.length >= 1) {
       setRound(state?.room?.rounds[state?.room?.rounds?.length - 1])
     }
     console.log('round', round)
