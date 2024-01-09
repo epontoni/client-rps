@@ -1,0 +1,14 @@
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+
+.choice {
+  font-size: 1.5rem;
+  position: absolute;
+  right: calc(50% - 1.5rem);
+  background-color: lightyellow;
+  border: 1px solid lightcoral;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
